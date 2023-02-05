@@ -1,6 +1,6 @@
 ﻿namespace Whisper.net.Wave;
 
-internal class WaveParser
+public sealed class WaveParser
 {
     private readonly Stream waveStream;
     private readonly ushort channels;
@@ -102,6 +102,21 @@ internal class WaveParser
 
         dataChunkSize = reader.ReadUInt32();
         dataChunkPosition = waveStream.Position;
+    }
+
+    public int GetChannelsCount()
+    {
+        return channels;
+    }
+
+    public uint GetSampleRate()
+    {
+        return sampleRate;
+    }
+
+    public ushort GetBitsPerSample()
+    {
+        return bitsPerSample;
     }
 
     public int GetSamplesCount()
